@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
 using System;
 using System.Linq;
+using Newtonsoft.Json;
 
 public class DataManager : MonoBehaviour
 {
@@ -13,12 +13,7 @@ public class DataManager : MonoBehaviour
 
     public void NewSave(Dictionary<string, int> playerData)
     {
-       //AAAAAAAAAHHHHHHHHHHHHHHHH
-        var list = playerData.Select(x => new Tuple<string, int>(x.Key, x.Value)).ToList();
-        //Code saves at this point to our text file 
-        //List<KeyValuePair<string, int>> list = playerData.ToList();
-        Debug.Log(list.GetType());
-        string json = JsonUtility.ToJson(list);
+        string json = JsonConvert.SerializeObject(playerData, Formatting.Indented);
         System.IO.File.WriteAllText(@"D:\SimpaGameBotData\ProgressiveRaffle.txt", json);
     }
 
