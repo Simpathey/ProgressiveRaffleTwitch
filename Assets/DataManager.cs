@@ -13,16 +13,15 @@ public class DataManager : MonoBehaviour
 
     public void NewSave(Dictionary<string, int> playerData)
     {
-        string json = JsonConvert.SerializeObject(playerData, Formatting.Indented);
-        System.IO.File.WriteAllText(@"D:\SimpaGameBotData\ProgressiveRaffle.txt", json);
+        //string json = JsonConvert.SerializeObject(playerData, Formatting.Indented);
+        //System.IO.File.WriteAllText(@"D:\SimpaGameBotData\ProgressiveRaffle.txt", json);
     }
 
     public Dictionary<string, int> Load()
     {
        data = new Dictionary<string, int>();
        string json = ReadFromFile(file);
-       return JsonUtility.FromJson<Dictionary<string,int>>(json);
-        //JsonUtility.FromJsonOverwrite(json, data);
+        return data;
     }
 
     private string ReadFromFile(string fileName)
